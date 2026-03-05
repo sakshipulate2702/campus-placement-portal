@@ -10,3 +10,9 @@ function nextStep(from) {
     currentStep = from - 1;
     updateStepUI(currentStep);
   }
+  function submitForm() {
+    if (!validateStep3()) return;
+    document.getElementById('panel3').classList.remove('active');
+    document.getElementById('successBox').classList.add('show');
+    showToast('🎉 Registration successful! Welcome to CampusHire.');
+  }
