@@ -316,3 +316,52 @@ body {
     border-radius: 100px;
     display: inline-block
 }
+
+/* ── GRID ── */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem
+}
+.card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem;
+    animation: fadeUp 0.55s ease both;
+    animation-delay: 0.25s;
+    transition: box-shadow 0.2s
+}
+
+.card:hover {
+    box-shadow: 0 6px 22px rgba(15, 26, 53, 0.06)
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.1rem
+}
+
+.card-title {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 0.93rem;
+    color: var(--ink)
+}
+
+.card-link {
+    font-size: 0.77rem;
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 600
+}
