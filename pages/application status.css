@@ -1,73 +1,114 @@
 body{
+font-family:'Bricolage Grotesque',sans-serif;
+background:#F5F0E8;
 margin:0;
-font-family:Arial;
-height:100vh;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:white;
+border-bottom:1px solid #ddd;
+}
+
+.nav-logo{
+font-weight:700;
+font-size:20px;
+}
+
+.nav-links a{
+margin:0 10px;
+text-decoration:none;
+color:#333;
+}
+
+.btn{
+padding:8px 16px;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+
+.btn-primary{
+background:#E8650A;
+color:white;
+}
+
+.page-wrap{
+padding-top:20px;
+}
+
+.status-hero{
+background:#1A1208;
+color:white;
+padding:40px;
+}
+
+.pipeline-row{
+display:flex;
+background:white;
+margin:30px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.pipe-stage{
+flex:1;
+padding:15px;
+text-align:center;
+border-right:1px solid #eee;
+}
+
+.search-bar{
+display:flex;
+border:1px solid #ddd;
+padding:6px 10px;
+border-radius:8px;
+background:white;
+}
+
+.search-bar input{
+border:none;
+outline:none;
+}
+
+.app-row{
+background:white;
+margin:15px 30px;
+padding:15px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+}
+
+.modal-overlay{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.5);
 display:flex;
 justify-content:center;
 align-items:center;
-
-background: linear-gradient(135deg,#fc951f,#e2ddd5);
 }
 
-.container{
-text-align:center;
-color:rgb(19, 18, 18);
+.hidden{
+display:none;
 }
 
-.subtitle{
-margin-bottom:30px;
+.modal{
+background:white;
+padding:20px;
+border-radius:12px;
+width:300px;
 }
 
-.status-card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(10px);
-padding:35px;
-width:350px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-input{
-width:90%;
-padding:12px;
-margin-top:10px;
-margin-bottom:20px;
+.toast{
+background:black;
+color:white;
+padding:10px;
+margin:10px;
 border-radius:8px;
-border:none;
-}
-
-button{
-background:#221b1e;
-color:rgb(250, 244, 244);
-border:none;
-padding:12px 25px;
-border-radius:25px;
-cursor:pointer;
-font-size:16px;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-background:#36252c;
-}
-
-#result{
-margin-top:20px;
-font-size:18px;
-font-weight:bold;
-}
-
-.progress{
-margin-top:25px;
-display:flex;
-justify-content:space-between;
-font-size:14px;
-}
-
-.step{
-background:rgb(248, 245, 245);
-color:#333;
-padding:5px 10px;
-border-radius:20px;
 }

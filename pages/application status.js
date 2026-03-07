@@ -1,51 +1,90 @@
-function checkStatus(){
+const defaultApps=[
+{id:1,title:'Software Engineer',co:'Google',icon:'🔍',status:'Interview',ctc:'₹28 LPA'},
+{id:2,title:'Frontend Developer',co:'Flipkart',icon:'🛒',status:'Applied',ctc:'₹18 LPA'},
+{id:3,title:'Data Analyst',co:'Deloitte',icon:'📊',status:'Offered',ctc:'₹12 LPA'}
+];
 
-let id=document.getElementById("appId").value;
-let result=document.getElementById("result");
+let statusTab="all";
 
-if(id=="UJP101"){
-result.innerHTML="📩 Application Received";
+function getApps(){
+return JSON.parse(localStorage.getItem("apps")||"[]").length?
+JSON.parse(localStorage.getItem("apps")):
+defaultApps;
 }
 
-else if(id=="UJP102"){
-result.innerHTML="🕒 Application Under Review";
+function saveApps(apps){
+localStorage.setItem("apps",JSON.stringify(apps));
 }
 
-else if(id=="UJP103"){
-result.innerHTML="📅 Interview Scheduled";
-}
+function renderStatusApps(){
 
-else if(id=="UJP104"){
-result.innerHTML="🎉 Congratulations! You are Selected";
-}
+const apps=getApps();
+const list=document.getElementById("statusAppsList");
 
-else{
-result.innerHTML="❌ Application ID not found";
-}
+list.innerHTML=apps.map(a=>`
 
-}function checkStatus(){
+<div class="app-row">
 
-let id=document.getElementById("appId").value;
-let result=document.getElementById("result");
+<div>
+<b>${a.icon} ${a.title}</b>
+<br>
+${a.co} • ${a.ctc}
+<br>
+Status: ${a.status}
+</div>
 
-if(id=="UJP101"){
-result.innerHTML="📩 Application Received";
-}
+<div>
+<button onclick="removeApp(${a.id})">Remove</button>
+</div>
 
-else if(id=="UJP102"){
-result.innerHTML="🕒 Application Under Review";
-}
+</div>
 
-else if(id=="UJP103"){
-result.innerHTML="📅 Interview Scheduled";
-}
-
-else if(id=="UJP104"){
-result.innerHTML="🎉 Congratulations! You are Selected";
-}
-
-else{
-result.innerHTML="❌ Application ID not found";
-}
+`).join("");
 
 }
+
+function removeApp(id){
+
+let apps=getApps();
+apps=apps.filter(a=>a.id!==id);
+saveApps(apps);
+renderStatusApps();
+
+}
+
+function openAddModal(){
+document.getElementById("modalOverlay").classList.remove("hidden");
+}
+
+function closeAddModal(){
+document.getElementById("modalOverlay").classList.add("hidden");
+}
+
+function addApplication(){
+
+const title=document.getElementById("addTitle").value;
+const co=document.getElementById("addCo").value;
+const ctc=document.getElementById("addCtc").value;
+const status=document.getElementById("addStatus").value;
+const icon=document.getElementById("addIcon").value||"💼";
+
+let apps=getApps();
+
+apps.push({
+id:Date.now(),
+title,
+co,
+ctc,
+status,
+icon
+});
+
+saveApps(apps);
+
+closeAddModal();
+
+renderStatusApps();
+
+}
+
+document.addEventListener("DOMContentLoaded",renderStatusApps);

@@ -1,38 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Application Status</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CampusHire – My Applications</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
 <link rel="stylesheet" href="application status.css">
 </head>
 
 <body>
 
-<div class="container">
+<nav class="navbar">
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-dot"></span>CampusHire
+  </a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Jobs</a>
+    <a class="active" href="#">Applications</a>
+    <a href="#">Dashboard</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-outline">Login</button>
+    <button class="btn btn-primary">Register Free</button>
+  </div>
+</nav>
 
-<h1>💼 Application Status</h1>
-<p class="subtitle">🌐 Universal Job Portal</p>
+<div class="page-wrap">
 
-<div class="status-card">
+<div class="status-hero">
+<div class="status-hero-inner">
 
-<label>📄 Enter Application ID</label>
+<div>
+<div class="hero-tag-pill">📋 Application Tracker</div>
+<h1>My Applications</h1>
+<p>Track all your job applications in one place</p>
+</div>
 
-<input type="text" id="appId" placeholder="Example: UJP101">
+<button class="btn btn-primary btn-lg" onclick="openAddModal()">+ Add Application</button>
 
-<button onclick="checkStatus()">🔍 Check Status</button>
+</div>
+</div>
 
-<div id="result"></div>
+<div class="status-wrap">
 
-<div class="progress">
-<div class="step">📩 Applied</div>
-<div class="step">🕒 Review</div>
-<div class="step">📅 Interview</div>
-<div class="step">🎉 Selected</div>
+<div class="pipeline-row">
+
+<div class="pipe-stage">
+<div class="pipe-count" id="pc-applied">0</div>
+<div class="pipe-lbl">Applied</div>
+</div>
+
+<div class="pipe-stage">
+<div class="pipe-count" id="pc-review">0</div>
+<div class="pipe-lbl">In Review</div>
+</div>
+
+<div class="pipe-stage">
+<div class="pipe-count" id="pc-interview">0</div>
+<div class="pipe-lbl">Interview</div>
+</div>
+
+<div class="pipe-stage">
+<div class="pipe-count" id="pc-offer">0</div>
+<div class="pipe-lbl">Offered</div>
+</div>
+
+<div class="pipe-stage">
+<div class="pipe-count" id="pc-rejected">0</div>
+<div class="pipe-lbl">Rejected</div>
 </div>
 
 </div>
 
+<div class="toolbar">
+
+<div class="status-tabs">
+<div class="stab active" onclick="filterTab('all',this)">All</div>
+<div class="stab" onclick="filterTab('Applied',this)">Applied</div>
+<div class="stab" onclick="filterTab('In Review',this)">In Review</div>
+<div class="stab" onclick="filterTab('Interview',this)">Interview</div>
+<div class="stab" onclick="filterTab('Offered',this)">Offers</div>
+<div class="stab" onclick="filterTab('Rejected',this)">Rejected</div>
 </div>
+
+<div class="search-bar">
+<span>🔍</span>
+<input type="text" id="appSearch" placeholder="Search company or role..." oninput="renderStatusApps()">
+</div>
+
+</div>
+
+<div id="statusAppsList"></div>
+
+</div>
+</div>
+
+<div class="modal-overlay hidden" id="modalOverlay">
+
+<div class="modal">
+
+<div class="modal-head">
+<div class="modal-title">Add Application</div>
+<button onclick="closeAddModal()">✕</button>
+</div>
+
+<input id="addTitle" placeholder="Job Title">
+<input id="addCo" placeholder="Company">
+<input id="addCtc" placeholder="CTC">
+
+<select id="addStatus">
+<option>Applied</option>
+<option>In Review</option>
+<option>Interview</option>
+<option>Offered</option>
+<option>Rejected</option>
+</select>
+
+<input id="addIcon" placeholder="Emoji">
+
+<button onclick="addApplication()">Save</button>
+
+</div>
+</div>
+
+<div id="toastBox"></div>
 
 <script src="application status.js"></script>
 
