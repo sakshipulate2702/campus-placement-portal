@@ -134,8 +134,4 @@ For any queries related to the project, feel free to contact.
 
 ---
 
-## 👩‍💻 Author
 
-**Anjali Mhase**
-
-B.Sc Computer Science Student
